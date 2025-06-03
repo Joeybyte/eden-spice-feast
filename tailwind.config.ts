@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,6 +62,12 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				spicy: {
+					red: '#DC2626',
+					orange: '#EA580C',
+					yellow: '#EAB308',
+					dark: '#7F1D1D'
 				}
 			},
 			borderRadius: {
@@ -84,11 +91,16 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'flame': {
+					'0%, 100%': { transform: 'rotate(-2deg) scale(1)' },
+					'50%': { transform: 'rotate(2deg) scale(1.05)' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'flame': 'flame 2s ease-in-out infinite'
 			}
 		}
 	},
