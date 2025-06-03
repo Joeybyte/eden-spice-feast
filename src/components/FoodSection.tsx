@@ -29,7 +29,7 @@ const FoodSection = ({ onAddToCart }: FoodSectionProps) => {
       carbs: 85,
       fat: 24,
       spiceLevel: 3,
-      image: "https://images.unsplash.com/photo-1621996346565-e3dbc353d2e5?w=400&h=300&fit=crop"
+      image: "https://images.unsplash.com/photo-1473093295043-cdd812d0e601?w=400&h=300&fit=crop"
     },
     {
       id: 3,
@@ -41,7 +41,7 @@ const FoodSection = ({ onAddToCart }: FoodSectionProps) => {
       carbs: 42,
       fat: 18,
       spiceLevel: 4,
-      image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400&h=300&fit=crop"
+      image: "https://images.unsplash.com/photo-1551504734-5ee1c4a1479b?w=400&h=300&fit=crop"
     },
     {
       id: 4,
@@ -77,7 +77,7 @@ const FoodSection = ({ onAddToCart }: FoodSectionProps) => {
       carbs: 55,
       fat: 15,
       spiceLevel: 3,
-      image: "https://images.unsplash.com/photo-1565299507177-b0ac66763828?w=400&h=300&fit=crop"
+      image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400&h=300&fit=crop"
     }
   ];
 

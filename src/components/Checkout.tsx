@@ -32,21 +32,21 @@ const Checkout = ({ items, onOrderComplete, onBack }: CheckoutProps) => {
     {
       id: "basic",
       name: "Basic Plan",
-      price: 19.99,
+      price: 4.99,
       description: "5% discount on all orders, Free delivery on orders above RM50",
       features: ["5% discount", "Free delivery (RM50+)", "Basic customer support"]
     },
     {
       id: "premium",
       name: "Premium Plan", 
-      price: 39.99,
+      price: 9.99,
       description: "10% discount on all orders, Free delivery, Priority support",
       features: ["10% discount", "Free delivery", "Priority support", "Exclusive recipes"]
     },
     {
       id: "spice-master",
       name: "Spice Master Plan",
-      price: 59.99,
+      price: 14.99,
       description: "15% discount, Free delivery, Early access to new dishes",
       features: ["15% discount", "Free delivery", "Early access", "Personal spice consultant", "Monthly spice box"]
     }
