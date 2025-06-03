@@ -11,73 +11,73 @@ const FoodSection = ({ onAddToCart }: FoodSectionProps) => {
       id: 1,
       name: "Fire Dragon Wings",
       description: "Crispy wings glazed with our signature ghost pepper sauce",
-      price: 14.99,
+      price: 24.99,
       calories: 520,
       protein: 45,
       carbs: 8,
       fat: 32,
       spiceLevel: 5,
-      image: "https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=400&h=300&fit=crop"
+      image: "https://images.unsplash.com/photo-1567620832903-9fc6debc209f?w=400&h=300&fit=crop"
     },
     {
       id: 2,
       name: "Volcanic Pasta",
       description: "Spicy arrabbiata with jalapeños and crushed red pepper",
-      price: 16.99,
+      price: 28.99,
       calories: 680,
       protein: 22,
       carbs: 85,
       fat: 24,
       spiceLevel: 3,
-      image: "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?w=400&h=300&fit=crop"
+      image: "https://images.unsplash.com/photo-1621996346565-e3dbc353d2e5?w=400&h=300&fit=crop"
     },
     {
       id: 3,
       name: "Inferno Tacos",
       description: "Three soft tacos with habanero-marinated chicken and spicy salsa",
-      price: 12.99,
+      price: 21.99,
       calories: 450,
       protein: 38,
       carbs: 42,
       fat: 18,
       spiceLevel: 4,
-      image: "https://images.unsplash.com/photo-1582562124811-c09040d0a901?w=400&h=300&fit=crop"
+      image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400&h=300&fit=crop"
     },
     {
       id: 4,
       name: "Devil's Curry",
       description: "Authentic Thai red curry with extra chilies and coconut milk",
-      price: 18.99,
+      price: 32.99,
       calories: 620,
       protein: 35,
       carbs: 45,
       fat: 35,
       spiceLevel: 4,
-      image: "https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?w=400&h=300&fit=crop"
+      image: "https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?w=400&h=300&fit=crop"
     },
     {
       id: 5,
       name: "Blazing BBQ Ribs",
       description: "Tender ribs smothered in our Carolina reaper BBQ sauce",
-      price: 22.99,
+      price: 39.99,
       calories: 780,
       protein: 55,
       carbs: 25,
       fat: 48,
       spiceLevel: 5,
-      image: "https://images.unsplash.com/photo-1465146344425-f00d5f5c8f07?w=400&h=300&fit=crop"
+      image: "https://images.unsplash.com/photo-1544025162-d76694265947?w=400&h=300&fit=crop"
     },
     {
       id: 6,
       name: "Spicy Shrimp Bowl",
       description: "Cajun-spiced shrimp over rice with jalapeño and bell peppers",
-      price: 19.99,
+      price: 34.99,
       calories: 540,
       protein: 42,
       carbs: 55,
       fat: 15,
       spiceLevel: 3,
-      image: "https://images.unsplash.com/photo-1582562124811-c09040d0a901?w=400&h=300&fit=crop"
+      image: "https://images.unsplash.com/photo-1565299507177-b0ac66763828?w=400&h=300&fit=crop"
     }
   ];
 

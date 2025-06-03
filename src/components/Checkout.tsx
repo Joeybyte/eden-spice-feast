@@ -1,4 +1,3 @@
-
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -23,16 +22,44 @@ const Checkout = ({ items, onOrderComplete, onBack }: CheckoutProps) => {
     zipCode: "",
   });
   const [paymentMethod, setPaymentMethod] = useState("card");
+  const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
 
   const subtotal = items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-  const tax = subtotal * 0.08;
-  const delivery = 4.99;
-  const total = subtotal + tax + delivery;
+  const tax = subtotal * 0.06; // 6% SST in Malaysia
+  const delivery = 8.99;
+  
+  const subscriptionPlans = [
+    {
+      id: "basic",
+      name: "Basic Plan",
+      price: 19.99,
+      description: "5% discount on all orders, Free delivery on orders above RM50",
+      features: ["5% discount", "Free delivery (RM50+)", "Basic customer support"]
+    },
+    {
+      id: "premium",
+      name: "Premium Plan", 
+      price: 39.99,
+      description: "10% discount on all orders, Free delivery, Priority support",
+      features: ["10% discount", "Free delivery", "Priority support", "Exclusive recipes"]
+    },
+    {
+      id: "spice-master",
+      name: "Spice Master Plan",
+      price: 59.99,
+      description: "15% discount, Free delivery, Early access to new dishes",
+      features: ["15% discount", "Free delivery", "Early access", "Personal spice consultant", "Monthly spice box"]
+    }
+  ];
+
+  const planDiscount = selectedPlan === "basic" ? 0.05 : selectedPlan === "premium" ? 0.10 : selectedPlan === "spice-master" ? 0.15 : 0;
+  const discountAmount = subtotal * planDiscount;
+  const adjustedDelivery = selectedPlan && (selectedPlan !== "basic" || subtotal >= 50) ? 0 : delivery;
+  const total = subtotal - discountAmount + tax + adjustedDelivery;
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would normally process the payment
-    console.log("Order submitted:", { shippingInfo, paymentMethod, items, total });
+    console.log("Order submitted:", { shippingInfo, paymentMethod, items, total, selectedPlan });
     onOrderComplete();
   };
 
@@ -47,8 +74,51 @@ const Checkout = ({ items, onOrderComplete, onBack }: CheckoutProps) => {
           ← Back to Cart
         </Button>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <Card>
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Subscription Plans */}
+          <Card className="lg:col-span-3">
+            <CardHeader>
+              <CardTitle>Choose a Subscription Plan (Optional) 🔥</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <RadioGroup value={selectedPlan || ""} onValueChange={setSelectedPlan}>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  {subscriptionPlans.map((plan) => (
+                    <div key={plan.id} className="relative">
+                      <RadioGroupItem value={plan.id} id={plan.id} className="sr-only" />
+                      <Label 
+                        htmlFor={plan.id} 
+                        className={`block p-4 border-2 rounded-lg cursor-pointer transition-all ${
+                          selectedPlan === plan.id ? 'border-spicy-red bg-spicy-red/5' : 'border-gray-200 hover:border-spicy-orange'
+                        }`}
+                      >
+                        <div className="font-semibold text-lg">{plan.name}</div>
+                        <div className="text-2xl font-bold text-spicy-red">RM{plan.price}/month</div>
+                        <div className="text-sm text-gray-600 mt-2">{plan.description}</div>
+                        <ul className="mt-3 space-y-1">
+                          {plan.features.map((feature, index) => (
+                            <li key={index} className="text-sm flex items-center">
+                              <span className="text-green-500 mr-2">✓</span>
+                              {feature}
+                            </li>
+                          ))}
+                        </ul>
+                      </Label>
+                    </div>
+                  ))}
+                </div>
+                <Button 
+                  variant="outline" 
+                  onClick={() => setSelectedPlan(null)}
+                  className="mt-4"
+                >
+                  No Subscription (One-time order)
+                </Button>
+              </RadioGroup>
+            </CardContent>
+          </Card>
+
+          <Card className="lg:col-span-2">
             <CardHeader>
               <CardTitle>Shipping Information 📦</CardTitle>
             </CardHeader>
@@ -107,7 +177,7 @@ const Checkout = ({ items, onOrderComplete, onBack }: CheckoutProps) => {
                     />
                   </div>
                   <div>
-                    <Label htmlFor="zipCode">ZIP Code</Label>
+                    <Label htmlFor="zipCode">Postcode</Label>
                     <Input
                       id="zipCode"
                       value={shippingInfo.zipCode}
@@ -125,8 +195,12 @@ const Checkout = ({ items, onOrderComplete, onBack }: CheckoutProps) => {
                       <Label htmlFor="card">Credit/Debit Card</Label>
                     </div>
                     <div className="flex items-center space-x-2">
-                      <RadioGroupItem value="paypal" id="paypal" />
-                      <Label htmlFor="paypal">PayPal</Label>
+                      <RadioGroupItem value="grabpay" id="grabpay" />
+                      <Label htmlFor="grabpay">GrabPay</Label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                      <RadioGroupItem value="tng" id="tng" />
+                      <Label htmlFor="tng">Touch 'n Go eWallet</Label>
                     </div>
                   </RadioGroup>
                 </div>
@@ -153,26 +227,40 @@ const Checkout = ({ items, onOrderComplete, onBack }: CheckoutProps) => {
                       <p className="font-medium">{item.name}</p>
                       <p className="text-sm text-gray-600">Qty: {item.quantity}</p>
                     </div>
-                    <p className="font-medium">${(item.price * item.quantity).toFixed(2)}</p>
+                    <p className="font-medium">RM{(item.price * item.quantity).toFixed(2)}</p>
                   </div>
                 ))}
                 
                 <div className="border-t pt-4 space-y-2">
                   <div className="flex justify-between">
                     <span>Subtotal:</span>
-                    <span>${subtotal.toFixed(2)}</span>
+                    <span>RM{subtotal.toFixed(2)}</span>
                   </div>
+                  {selectedPlan && (
+                    <div className="flex justify-between text-green-600">
+                      <span>Discount ({(planDiscount * 100).toFixed(0)}%):</span>
+                      <span>-RM{discountAmount.toFixed(2)}</span>
+                    </div>
+                  )}
                   <div className="flex justify-between">
-                    <span>Tax:</span>
-                    <span>${tax.toFixed(2)}</span>
+                    <span>SST (6%):</span>
+                    <span>RM{tax.toFixed(2)}</span>
                   </div>
                   <div className="flex justify-between">
                     <span>Delivery:</span>
-                    <span>${delivery.toFixed(2)}</span>
+                    <span className={adjustedDelivery === 0 ? "text-green-600" : ""}>
+                      {adjustedDelivery === 0 ? "FREE" : `RM${adjustedDelivery.toFixed(2)}`}
+                    </span>
                   </div>
+                  {selectedPlan && (
+                    <div className="flex justify-between text-spicy-red">
+                      <span>Monthly Subscription:</span>
+                      <span>RM{subscriptionPlans.find(p => p.id === selectedPlan)?.price.toFixed(2)}</span>
+                    </div>
+                  )}
                   <div className="flex justify-between font-bold text-lg border-t pt-2">
                     <span>Total:</span>
-                    <span className="text-spicy-red">${total.toFixed(2)}</span>
+                    <span className="text-spicy-red">RM{total.toFixed(2)}</span>
                   </div>
                 </div>
               </div>

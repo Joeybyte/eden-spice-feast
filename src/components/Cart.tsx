@@ -17,7 +17,7 @@ interface CartProps {
 
 const Cart = ({ items, onUpdateQuantity, onRemoveItem, onCheckout, onClose }: CartProps) => {
   const subtotal = items.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-  const tax = subtotal * 0.08;
+  const tax = subtotal * 0.06; // 6% SST in Malaysia
   const total = subtotal + tax;
 
   if (items.length === 0) {
@@ -55,7 +55,7 @@ const Cart = ({ items, onUpdateQuantity, onRemoveItem, onCheckout, onClose }: Ca
                 <img src={item.image} alt={item.name} className="w-16 h-16 object-cover rounded" />
                 <div className="flex-1">
                   <h3 className="font-semibold">{item.name}</h3>
-                  <p className="text-gray-600">${item.price.toFixed(2)}</p>
+                  <p className="text-gray-600">RM{item.price.toFixed(2)}</p>
                 </div>
                 <div className="flex items-center space-x-2">
                   <Button
@@ -89,15 +89,15 @@ const Cart = ({ items, onUpdateQuantity, onRemoveItem, onCheckout, onClose }: Ca
           <div className="mt-6 border-t pt-4">
             <div className="flex justify-between mb-2">
               <span>Subtotal:</span>
-              <span>${subtotal.toFixed(2)}</span>
+              <span>RM{subtotal.toFixed(2)}</span>
             </div>
             <div className="flex justify-between mb-2">
-              <span>Tax:</span>
-              <span>${tax.toFixed(2)}</span>
+              <span>SST (6%):</span>
+              <span>RM{tax.toFixed(2)}</span>
             </div>
             <div className="flex justify-between font-bold text-lg">
               <span>Total:</span>
-              <span className="text-spicy-red">${total.toFixed(2)}</span>
+              <span className="text-spicy-red">RM{total.toFixed(2)}</span>
             </div>
           </div>
           

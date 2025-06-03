@@ -40,7 +40,7 @@ const FoodCard = ({ item, onAddToCart }: FoodCardProps) => {
       <CardHeader>
         <CardTitle className="text-spicy-dark">{item.name}</CardTitle>
         <CardDescription>{item.description}</CardDescription>
-        <div className="text-2xl font-bold text-spicy-red">${item.price.toFixed(2)}</div>
+        <div className="text-2xl font-bold text-spicy-red">RM{item.price.toFixed(2)}</div>
       </CardHeader>
       <CardContent>
         <div className="bg-gray-50 p-3 rounded-lg mb-4">
