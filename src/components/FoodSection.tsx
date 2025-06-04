@@ -1,4 +1,3 @@
-
 import FoodCard, { FoodItem } from "./FoodCard";
 
 interface FoodSectionProps {
@@ -77,7 +76,7 @@ const FoodSection = ({ onAddToCart }: FoodSectionProps) => {
       carbs: 55,
       fat: 15,
       spiceLevel: 3,
-      image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=400&h=300&fit=crop"
+      image: "https://images.unsplash.com/photo-1559847844-5315695dadae?w=400&h=300&fit=crop"
     }
   ];
 
