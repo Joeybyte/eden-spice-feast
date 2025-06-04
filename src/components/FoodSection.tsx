@@ -1,3 +1,4 @@
+
 import FoodCard, { FoodItem } from "./FoodCard";
 
 interface FoodSectionProps {
@@ -10,7 +11,7 @@ const FoodSection = ({ onAddToCart }: FoodSectionProps) => {
       id: 1,
       name: "Fire Dragon Wings",
       description: "Crispy wings glazed with our signature ghost pepper sauce",
-      price: 24.99,
+      price: 18.90,
       calories: 520,
       protein: 45,
       carbs: 8,
@@ -22,7 +23,7 @@ const FoodSection = ({ onAddToCart }: FoodSectionProps) => {
       id: 2,
       name: "Volcanic Pasta",
       description: "Spicy arrabbiata with jalapeños and crushed red pepper",
-      price: 28.99,
+      price: 16.90,
       calories: 680,
       protein: 22,
       carbs: 85,
@@ -34,7 +35,7 @@ const FoodSection = ({ onAddToCart }: FoodSectionProps) => {
       id: 3,
       name: "Inferno Tacos",
       description: "Three soft tacos with habanero-marinated chicken and spicy salsa",
-      price: 21.99,
+      price: 14.90,
       calories: 450,
       protein: 38,
       carbs: 42,
@@ -46,7 +47,7 @@ const FoodSection = ({ onAddToCart }: FoodSectionProps) => {
       id: 4,
       name: "Devil's Curry",
       description: "Authentic Thai red curry with extra chilies and coconut milk",
-      price: 32.99,
+      price: 19.90,
       calories: 620,
       protein: 35,
       carbs: 45,
@@ -58,7 +59,7 @@ const FoodSection = ({ onAddToCart }: FoodSectionProps) => {
       id: 5,
       name: "Blazing BBQ Ribs",
       description: "Tender ribs smothered in our Carolina reaper BBQ sauce",
-      price: 39.99,
+      price: 24.90,
       calories: 780,
       protein: 55,
       carbs: 25,
@@ -70,7 +71,7 @@ const FoodSection = ({ onAddToCart }: FoodSectionProps) => {
       id: 6,
       name: "Spicy Shrimp Bowl",
       description: "Cajun-spiced shrimp over rice with jalapeño and bell peppers",
-      price: 34.99,
+      price: 17.90,
       calories: 540,
       protein: 42,
       carbs: 55,
