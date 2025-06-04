@@ -27,7 +27,7 @@ const HeroSection = ({ onBrowseFood, onOrderNow }: HeroSectionProps) => {
             onClick={onOrderNow}
             size="lg" 
             variant="outline" 
-            className="border-white text-white hover:bg-white hover:text-spicy-red font-semibold px-8 py-3 text-lg transition-all transform hover:scale-105"
+            className="border-2 border-white bg-transparent text-white hover:bg-white hover:text-spicy-red font-semibold px-8 py-3 text-lg transition-all transform hover:scale-105"
           >
             Order Now 🌶️
           </Button>
